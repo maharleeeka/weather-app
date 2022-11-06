@@ -19,6 +19,6 @@ export const WeatherStatus = styled.div``;
 export const DateContainer = styled.div``;
 export const Temperature = styled.div``;
 export const SunContainer = styled.div``;
-export const SunIcon = styled.div<{icon: string}>`
-  background: url(${props => props.icon})
-`
+export const SunIcon = styled.div<{ icon: string }>`
+  background: url(${(props) => props.icon});
+`;
