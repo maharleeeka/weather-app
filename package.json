@@ -37,7 +37,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src'",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write 'src' --config ./.prettierrc"
+    "format": "prettier --write 'src' --config ./.prettierrc",
+    "prepush": "npm run lint",
+    "postinstall": "rm -rf .git/hooks/pre-push && node node_modules/husky/bin/install.js && rm -rf .git/hooks/pre-commit"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +68,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
+    "husky": "^8.0.1",
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "tailwindcss": "^3.2.2"
