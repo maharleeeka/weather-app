@@ -15,6 +15,7 @@ import {
   DayText
 } from './elements';
 import moment from 'moment';
+import SearchInput from '../search/searchInput';
 // import sunrise from '../../assets/sunrise.png';
 
 type WeatherType = {
@@ -45,8 +46,8 @@ export default function Weather() {
   const onChangeText = (value: string) => {
     setInputValue(value);
   };
-  const getWeatherState = () => {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${apiKey}`;
+  const getWeatherState = (cityValue: string) => {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${apiKey}`;
     fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
@@ -67,8 +68,8 @@ export default function Weather() {
   const kelvinToFarenheit = (k: number) => {
     return (k - 273.15).toFixed(2);
   };
-  const onPressSubmit = () => {
-    getWeatherState();
+  const onPressSubmit = (value: string) => {
+    getWeatherState(value);
   };
 
   const renderData = () => {
@@ -102,20 +103,7 @@ export default function Weather() {
   return (
     <Container className="h-screen py-10">
       <WeatherState className="m-auto py-10">
-        <SearchContainer className="flex flex-row justify-evenly w-full px-3">
-          <TextInput
-            className="border border-gray-300 text-gray-900 text-sm rounded-full block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-            onChange={(env) => onChangeText(env.target.value)}
-            value={inputValue}
-          />
-          <Button
-            type="submit"
-            className="text-white rounded-full focus:outline-none text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-            onClick={onPressSubmit}
-          >
-            SEARCH
-          </Button>
-        </SearchContainer>
+        <SearchInput onSubmit={onPressSubmit} />
         <DateContainer className="flex flex-row justify-around w-full py-5">
           <DayText className="text-white">{moment().format('dddd')}</DayText>
           <DateText className="text-white">{moment().format('MMM Do YY')}</DateText>

@@ -38,7 +38,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint 'src'",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write 'src' --config ./.prettierrc",
+    "format": "prettier --write src --config ./.prettierrc",
     "prepush": "npm run lint && npm run lint:fix"
   },
   "eslintConfig": {
