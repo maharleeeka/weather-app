@@ -10,10 +10,12 @@ import {
   TextInput,
   WeatherIcon,
   WeatherState,
-  WeatherStatus
-} from './Elements';
+  WeatherStatus,
+  DateText,
+  DayText
+} from './elements';
 import moment from 'moment';
-import sunrise from '../../assets/sunrise.png';
+// import sunrise from '../../assets/sunrise.png';
 
 type WeatherType = {
   name: string;
@@ -26,7 +28,7 @@ type WeatherType = {
   icon: string;
 };
 
-function Weather() {
+export default function Weather() {
   const [apiData, setApiData] = useState<WeatherType>({
     name: '',
     main: '',
@@ -98,30 +100,28 @@ function Weather() {
     ) : null;
   };
   return (
-    <Container className="h-screen bg-gray-100 py-12">
-      <WeatherState className="m-auto py-12 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <SearchContainer className="flex flex-row justify-evenly w-full py-2">
+    <Container className="h-screen py-10">
+      <WeatherState className="m-auto py-10">
+        <SearchContainer className="flex flex-row justify-evenly w-full px-3">
           <TextInput
-            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="border border-gray-300 text-gray-900 text-sm rounded-full block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
             onChange={(env) => onChangeText(env.target.value)}
             value={inputValue}
           />
           <Button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white w-full rounded-full focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             onClick={onPressSubmit}
           >
-            Check
+            SEARCH
           </Button>
         </SearchContainer>
-        <DateContainer className="flex flex-row justify-around w-full">
-          <div>{moment().format('dddd')}</div>
-          <div>{moment().format('MMM Do YY')}</div>
+        <DateContainer className="flex flex-row justify-around w-full py-5">
+          <DayText className="text-white">{moment().format('dddd')}</DayText>
+          <DateText className="text-white">{moment().format('MMM Do YY')}</DateText>
         </DateContainer>
         {renderData()}
       </WeatherState>
     </Container>
   );
 }
-
-export default Weather;
