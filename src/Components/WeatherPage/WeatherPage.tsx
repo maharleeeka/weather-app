@@ -110,7 +110,7 @@ export default function Weather() {
           />
           <Button
             type="submit"
-            className="text-white w-full rounded-full focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            className="text-white rounded-full focus:outline-none text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             onClick={onPressSubmit}
           >
             SEARCH
