@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import {
-  Button,
   Container,
   CurrentLocation,
   DateContainer,
-  SearchContainer,
   SunContainer,
   Temperature,
-  TextInput,
   WeatherIcon,
   WeatherState,
   WeatherStatus,
@@ -16,7 +13,6 @@ import {
 } from './elements';
 import moment from 'moment';
 import SearchInput from '../search/searchInput';
-// import sunrise from '../../assets/sunrise.png';
 
 type WeatherType = {
   name: string;
@@ -43,9 +39,6 @@ export default function Weather() {
   const [stateLoc, setStateLoc] = useState('');
   const [inputValue, setInputValue] = useState('');
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-  const onChangeText = (value: string) => {
-    setInputValue(value);
-  };
   const getWeatherState = (cityValue: string) => {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${apiKey}`;
     fetch(apiUrl)

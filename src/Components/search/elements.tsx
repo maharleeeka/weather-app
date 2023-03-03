@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { device } from '../../constants/device';
 
 export const SearchContainer = styled.div``;
 export const TextInput = styled.input``;
