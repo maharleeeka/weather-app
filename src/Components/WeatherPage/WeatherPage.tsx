@@ -11,9 +11,9 @@ import {
   WeatherIcon,
   WeatherState,
   WeatherStatus
-} from './Elements';
+} from './elements';
 import moment from 'moment';
-import sunrise from '../../assets/sunrise.png';
+// import sunrise from '../../assets/sunrise.png';
 
 type WeatherType = {
   name: string;
@@ -26,7 +26,7 @@ type WeatherType = {
   icon: string;
 };
 
-function Weather() {
+export default function Weather() {
   const [apiData, setApiData] = useState<WeatherType>({
     name: '',
     main: '',
@@ -123,5 +123,3 @@ function Weather() {
     </Container>
   );
 }
-
-export default Weather;
